@@ -13,7 +13,7 @@ struct HomeView: View {
     
     var body: some View {
         
-        Text("Hello, world!")
+        Text("Hello, world! change")
             .padding()
     }
 }
