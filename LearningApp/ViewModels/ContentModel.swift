@@ -19,7 +19,8 @@ class ContentModel: ObservableObject {
     @Published var currentLesson: Lesson?
     var currentLessonIndex = 0
     
-    
+    // current lesson explanation
+    @Published var lessonDescription = NSAttributedString()
     var styleData: Data?
     
     init() {
@@ -80,6 +81,7 @@ class ContentModel: ObservableObject {
         
     // set the current module
         currentModule = modules[currentModuleIndex]
+//        lessonDescription = currentLesson.
     }
     
     func beginLesson(_ lessonIndex:Int) {
@@ -91,6 +93,7 @@ class ContentModel: ObservableObject {
         }
         // set the current lesson
         currentLesson = currentModule!.content.lessons[currentLessonIndex]
+        lessonDescription = addStyling(currentLesson!.explanation)
     }
     
     func nextLesson(){
@@ -100,6 +103,7 @@ class ContentModel: ObservableObject {
         if currentLessonIndex < currentModule!.content.lessons.count{
             // set the current lesson property
             currentLesson = currentModule!.content.lessons[currentLessonIndex]
+            lessonDescription = addStyling(currentLesson!.explanation)
         }else{
             // Rest the lesson state
             currentLessonIndex = 0
@@ -109,5 +113,31 @@ class ContentModel: ObservableObject {
     
     func hasNextLesson() -> Bool{
         return (currentLessonIndex + 1 < currentModule!.content.lessons.count)
+    }
+    // Mark: -code styling
+    private func addStyling(_ htmlString: String) -> NSAttributedString{
+        var resultString = NSAttributedString()
+        var data = Data()
+        
+        // Add the styling data
+        if styleData != nil {
+            data.append(styleData!)
+        }
+        
+        data.append(Data(htmlString.utf8))
+        
+        
+        // Convert to attribate string
+        do{
+            let attributedString = try NSAttributedString(data: data, options: [.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil)
+                resultString = attributedString
+        
+        } catch {
+            print("Couldn't turn html into attributed string")
+        }
+        
+        return resultString
+        
+        
     }
 }
