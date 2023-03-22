@@ -23,14 +23,27 @@ struct HomeView: View {
                             module in
                             // Learning Card
                             VStack(spacing:20){
-                                HomeViewRow(
-                                    image: module.content.image,
-                                    title: "learn\(module.category)",
-                                    description: module.content.description,
-                                    count: "\(module.content.lessons.count) Lessons",
-                                    time: module.content.time
-                                    
+                                
+                                NavigationLink(
+                                    destination: ContentView()
+                                        .onAppear(perform: {
+                                            model.beginModule(module.id)
+                                        })
+                                    ,
+                                    label: {
+                                        HomeViewRow(
+                                            image: module.content.image,
+                                            title: "learn\(module.category)",
+                                            description: module.content.description,
+                                            count: "\(module.content.lessons.count) Lessons",
+                                            time: module.content.time
+                                            
+                                        )
+                                        
+                                    }
                                 )
+                                
+                                
                                 // Test Card
                                 HomeViewRow(
                                     image: module.test.image,
@@ -45,6 +58,7 @@ struct HomeView: View {
                                                         
                         }
                     }.padding()
+                        .accentColor(.black)
                 }
                 }
             .navigationTitle("Get Started")
