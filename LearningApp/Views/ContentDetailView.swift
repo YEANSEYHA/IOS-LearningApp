@@ -31,12 +31,24 @@ struct ContentDetailView: View {
                     model.nextLesson()
                 }, label: {
                     ZStack{
-                        Rectangle()
-                            .frame(height: 48)
-                            .foregroundColor(Color.green)
-                            .cornerRadius(10)
-                            .shadow(radius: 5)
+                        RectangleCard(color: Color.green)
                         Text("Next lessons: \(model.currentModule!.content.lessons[model.currentLessonIndex + 1].title)")
+                            .foregroundColor(Color.white)
+                            .bold()
+                    }
+                    
+                })
+            }
+            else {
+                // Show the completed button insted
+                
+                Button(action: {
+                    // Take the user back to the homeview
+                    model.currentContentSelected = nil
+                }, label: {
+                    ZStack{
+                        RectangleCard(color: Color.green)
+                        Text("Completed")
                             .foregroundColor(Color.white)
                             .bold()
                     }

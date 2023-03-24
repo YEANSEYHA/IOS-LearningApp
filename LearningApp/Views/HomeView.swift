@@ -28,8 +28,11 @@ struct HomeView: View {
                                     destination: ContentView()
                                         .onAppear(perform: {
                                             model.beginModule(module.id)
+                                            
                                         })
                                     ,
+                                    tag: module.id,
+                                    selection: $model.currentContentSelected,
                                     label: {
                                         HomeViewRow(
                                             image: module.content.image,
