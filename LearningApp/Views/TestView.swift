@@ -13,10 +13,11 @@ struct TestView: View {
     @State var numCorrect = 0
     @State var submitted = false
     
+    @State var showResults = false
     
     var body: some View {
         //Bug here when remove Text the Vstack is not display
-            if model.currentQuestion != nil {
+            if model.currentQuestion != nil && showResults == false {
             
                 VStack(alignment: .leading) {
                 // QUESTION number
@@ -80,18 +81,41 @@ struct TestView: View {
                 
                 // Buttons
                     Button{
-                        // Change submitted state to true
-                        submitted = true
-                        
-                        // Check the answer and increment the counter if correct
-                        if selectedAnswerIndex == model.currentQuestion!.correctIndex {
-                            numCorrect += 1
+                        // check if answers has been submitted
+                        if submitted == true {
+                            
+                            // check if it the last question
+                            if model.currentQuestionIndex + 1 ==
+                                model.currentModule!.test.questions.count {
+                                showResults = true
+                                
+                            }else {
+                                // answer has already been submitted, move to next question
+                                model.nextQuestion()
+                                // Reset properties
+                                submitted = false
+                                selectedAnswerIndex = nil
+                            }
+                            
+                            
+                            
+                        }else {
+                            // submit the answer
+                            
+                            // Change submitted state to true
+                            submitted = true
+                            
+                            // Check the answer and increment the counter if correct
+                            if selectedAnswerIndex == model.currentQuestion!.correctIndex {
+                                numCorrect += 1
+                            }
                         }
+                        
                     }label: {
                         ZStack{
                             RectangleCard(color: .green)
                                 .frame(height: 48)
-                            Text("Submit")
+                            Text(buttonText)
                                 .bold()
                                 .padding()
                                 .foregroundColor(.white)
@@ -100,9 +124,25 @@ struct TestView: View {
                     }.disabled(selectedAnswerIndex == nil)
             }
             .navigationBarTitle("\(model.currentModule?.category ?? "") Test")
-        } else {
+        }
+            else if showResults == true {
             // Test hasn't loaded yet
-            ProgressView()
+            TestResultView()
+            } else {
+                ProgressView()
+            }
+    }
+    var buttonText: String {
+        // check if answer has been submitted
+        if submitted == true {
+            if model.currentQuestionIndex + 1 == model.currentModule!.test.questions.count {
+                return "Finish" // or finish
+            } else {
+                return "Next"
+            }
+        }else {
+            //There is a next question
+            return "Submit"
         }
     }
 }
