@@ -34,8 +34,10 @@ class ContentModel: ObservableObject {
     @Published var currentTestSelected:Int?
     
     init() {
-        
+        // Parse local data
         getLocalData()
+        // download json file and parse
+        getRemoteData()
         
     }
     // Mark - Data methods
@@ -76,6 +78,55 @@ class ContentModel: ObservableObject {
             print("Couldn't parse style data")
         }
         
+    }
+    
+    // Fetch data from the network
+    func getRemoteData() {
+        // String path
+        let urlString = "https://codewithchris.github.io/learningapp-data/data2.json"
+        
+        // create a url object
+        let url = URL(string: urlString)
+        guard url != nil else {
+            // couldn't create url
+            return
+        }
+        
+        // Create a URL Request object
+        let request = URLRequest(url: url!)
+        
+        // Get the session and  kick off the task
+        let session = URLSession.shared
+      
+        
+        let dataTask = session.dataTask(with: request) {
+            (data, response, error) in
+            // check if there is an error
+            guard error == nil else{
+                // THere was an error
+                return
+            }
+            
+            // handle the response
+            // Try to decode the json into an array of modules
+            
+            do {
+                let decoder = JSONDecoder()
+                let modules = try decoder.decode([Module].self, from: data!)
+                // append parse modules into modules property
+                self.modules += modules
+            } catch{
+                // could not parse the data
+                
+                
+            }
+            
+            
+        }
+        
+        
+        // kickoff datatask
+        dataTask.resume()
     }
     
     // Mark - module navigation methods
