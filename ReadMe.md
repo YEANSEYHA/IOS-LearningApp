@@ -2,6 +2,6 @@
 <br />
 
 <p align="row">
-<img src= "https://drive.google.com/file/d/1dGQughgVi597Zrqird_k_Usk4iBzo8UH/view?usp=share_link" width="400" >
+<img src= "https://image-upload-example-1999.s3.ap-northeast-1.amazonaws.com/Screenshot+2023-04-02+at+10.44.12+PM.png" width="400" >
 
 </p>
