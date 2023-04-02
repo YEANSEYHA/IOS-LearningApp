@@ -97,7 +97,7 @@ class ContentModel: ObservableObject {
         
         // Get the session and  kick off the task
         let session = URLSession.shared
-      
+        
         
         let dataTask = session.dataTask(with: request) {
             (data, response, error) in
@@ -140,9 +140,9 @@ class ContentModel: ObservableObject {
             }
         }
         
-    // set the current module
+        // set the current module
         currentModule = modules[currentModuleIndex]
-//        lessonDescription = currentLesson.
+        //        lessonDescription = currentLesson.
     }
     
     func beginLesson(_ lessonIndex:Int) {
@@ -192,7 +192,7 @@ class ContentModel: ObservableObject {
     }
     func nextQuestion(){
         // Advance the question index
-            currentQuestionIndex += 1
+        currentQuestionIndex += 1
         // check that it's within the range of question
         if currentQuestionIndex < currentModule!.test.questions.count {
             // set the current question
@@ -222,8 +222,8 @@ class ContentModel: ObservableObject {
         // Convert to attribate string
         do{
             let attributedString = try NSAttributedString(data: data, options: [.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil)
-                resultString = attributedString
-        
+            resultString = attributedString
+            
         } catch {
             print("Couldn't turn html into attributed string")
         }

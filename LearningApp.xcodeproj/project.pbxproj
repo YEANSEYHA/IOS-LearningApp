@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0947D6B929D9D46F001DB0E1 /* ReadMe.md in Resources */ = {isa = PBXBuildFile; fileRef = 0947D6B829D9D46F001DB0E1 /* ReadMe.md */; };
 		096EEB0A29CAB641003C9AE7 /* HomeViewRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096EEB0929CAB641003C9AE7 /* HomeViewRow.swift */; };
 		096EEB0C29CACEBC003C9AE7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096EEB0B29CACEBC003C9AE7 /* ContentView.swift */; };
 		096EEB0E29CADD4D003C9AE7 /* ContentViewRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096EEB0D29CADD4D003C9AE7 /* ContentViewRow.swift */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0947D6B829D9D46F001DB0E1 /* ReadMe.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ReadMe.md; sourceTree = "<group>"; };
 		096EEB0929CAB641003C9AE7 /* HomeViewRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewRow.swift; sourceTree = "<group>"; };
 		096EEB0B29CACEBC003C9AE7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		096EEB0D29CADD4D003C9AE7 /* ContentViewRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewRow.swift; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 		83CAF21025F03C8D00EC180E = {
 			isa = PBXGroup;
 			children = (
+				0947D6B829D9D46F001DB0E1 /* ReadMe.md */,
 				83CAF21B25F03C8D00EC180E /* LearningApp */,
 				83CAF21A25F03C8D00EC180E /* Products */,
 				096EEB1129CAE2BF003C9AE7 /* Frameworks */,
@@ -221,6 +224,7 @@
 				83CEC85325F16BDC00406B56 /* data.json in Resources */,
 				83CEC85425F16BDC00406B56 /* style.html in Resources */,
 				83CAF22125F03C8F00EC180E /* Assets.xcassets in Resources */,
+				0947D6B929D9D46F001DB0E1 /* ReadMe.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
