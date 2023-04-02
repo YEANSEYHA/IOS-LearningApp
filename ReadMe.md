@@ -2,6 +2,6 @@
 <br />
 
 <p align="row">
-<img src= "https://drive.google.com/file/d/1i-9oQVaTpkLYGGFTtZsaOzA0fbLdxv4f" width="400" >
+<img src= "https://drive.google.com/file/d/1dGQughgVi597Zrqird_k_Usk4iBzo8UH/view?usp=share_link" width="400" >
 
 </p>
